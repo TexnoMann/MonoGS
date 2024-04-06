@@ -36,5 +36,5 @@ COPY ./requirements.txt /workspace/monogs/requirements.txt
 RUN cd monogs && pip3 install -r requirements.txt
 COPY ./submodules /workspace/monogs/submodules
 RUN cd monogs/submodules && pip3 install ./simple-knn/ && pip3 install ./diff-gaussian-rasterization/
-
+RUN git config --global --add safe.directory '/workspace/monogs'
 
