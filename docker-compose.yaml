@@ -1,0 +1,29 @@
+version: "3.4"
+
+services:
+  gs:
+    image: mono-gs:latest
+    build:
+      context: .
+      args:
+        - from=nvidia/cuda:12.3.2-cudnn9-devel-ubuntu22.04
+    environment:
+      - DISPLAY
+      - XAUTHORITY
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /dev:/dev
+      - "./:/workspace/monogs"
+    network_mode: host
+    privileged: true
+    tty: true
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

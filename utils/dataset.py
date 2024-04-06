@@ -10,10 +10,10 @@ from PIL import Image
 
 from gaussian_splatting.utils.graphics_utils import focal2fov
 
-try:
-    import pyrealsense2 as rs
-except Exception:
-    pass
+# try:
+import pyrealsense2 as rs
+# except Exception:
+#     pass
 
 
 class ReplicaParser:
